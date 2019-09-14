@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.compileSdk
+    defaultConfig {
+        applicationId "com.karntrehan"
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner testing.junitRunner
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "API_BASE", '""'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_BASE", '""'
+        }
+    }
+
+    //dynamicFeatures = [":{MODULE_NAME}"]
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Kotlin
+    api kotlinDep.stdlib
+    api kotlinDep.coroutines
+
+    //Android
+    api androidDependencies.appCompat
+
+    //DI
+    api daggerDep.core
+    kapt daggerDep.compiler
+
+    //Arch components
+    api archComponents.components
+    kapt archComponents.componentsCompiler
+    api archComponents.viewModelKtx
+
+    //Networking
+    api networking.okhttp
+    api networking.okhttpLog
+    api networking.gson
+    api networking.retrofit
+    api networking.retrofitRx
+    api networking.retrofitGson
+
+    //UI
+    api ui.constraintLayout
+    api ui.recyclerview
+    api ui.material
+
+    //rx
+    api rx.java
+    api rx.android
+    api rx.kotlin
+
+}

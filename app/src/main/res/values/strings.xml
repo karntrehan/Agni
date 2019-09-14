@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">agni</string>
+    <string name="cannot_connect_to_internet">Could not connect to the internet</string>
+
+</resources>
