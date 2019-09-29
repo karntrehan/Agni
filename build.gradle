@@ -39,6 +39,15 @@ buildscript {
 
         ]
 
+        /*https://developer.android.com/jetpack/androidx/releases/room*/
+        roomDbVersion = '2.2.0-rc01'
+        roomDb = [
+                core    : "androidx.room:room-runtime:${roomDbVersion}",
+                compiler: "androidx.room:room-compiler:${roomDbVersion}",
+                ktx     : "androidx.room:room-ktx:${roomDbVersion}",
+                rx      : "androidx.room:room-rxjava2:${roomDbVersion}",
+        ]
+
         /*https://github.com/square/okhttp/blob/master/CHANGELOG.md*/
         okhttpVersion = '4.2.0'
         /*https://github.com/square/retrofit/blob/master/CHANGELOG.md*/
@@ -84,7 +93,8 @@ buildscript {
                 mockitoKotlin       : "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0",
                 roboelectric        : "org.robolectric:robolectric:${roboelectricVersion}",
                 roboelectricMultidex: "org.robolectric:shadows-multidex:${roboelectricVersion}",
-                aacTesting          : "androidx.arch.core:core-testing:${archComponentsVersion}"
+                aacTesting          : "androidx.arch.core:core-testing:${archComponentsVersion}",
+                roomDb              : "androidx.room:room-testing:${roomDbVersion}"
         ]
 
     }
