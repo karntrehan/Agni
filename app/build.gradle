@@ -63,6 +63,8 @@ dependencies {
     api ui.constraintLayout
     api ui.recyclerview
     api ui.material
+    api ui.picasso
+    api ui.picassoOkHttp
 
     //rx
     api rx.java

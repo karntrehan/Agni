@@ -69,6 +69,8 @@ buildscript {
                 material        : 'com.google.android.material:material:1.0.0',
                 /*https://github.com/square/picasso#download*/
                 picasso         : "com.squareup.picasso:picasso:2.71828",
+                /*https://github.com/JakeWharton/picasso2-okhttp3-downloader#download*/
+                picassoOkHttp   : "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
         ]
 
         other = [
