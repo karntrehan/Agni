@@ -5,11 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.karntrehan.extensions.hide
+import com.karntrehan.utils.CoDispatcher
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-abstract class BaseVM : ViewModel() {
+abstract class BaseVM(private val coDispatcher: CoDispatcher) : ViewModel() {
 
     val disposable = CompositeDisposable()
 
@@ -38,7 +39,7 @@ abstract class BaseVM : ViewModel() {
     }
 
     protected fun launchSafely(coroutine: suspend CoroutineScope.() -> Unit) {
-        viewModelScope.launch {
+        viewModelScope.launch(coDispatcher.default) {
             try {
                 coroutine()
             } catch (error: Throwable) {

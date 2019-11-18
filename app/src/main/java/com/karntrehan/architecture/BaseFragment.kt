@@ -12,9 +12,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.*
 import com.google.android.material.snackbar.Snackbar
 import com.karntrehan.R
 import java.net.UnknownHostException
@@ -138,5 +136,16 @@ abstract class BaseFragment : Fragment() {
     //endregion
 
     protected open fun popBack() = parentActivity.supportFragmentManager.popBackStack()
+
+    protected fun <T> observe(
+        liveData: LiveData<T>,
+        onChanged: (T) -> Unit,
+        owner: LifecycleOwner = viewLifecycleOwner
+    ) {
+        liveData.observe(owner, Observer { data ->
+            if (data == null) return@Observer
+            onChanged(data)
+        })
+    }
 
 }

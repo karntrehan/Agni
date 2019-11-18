@@ -51,6 +51,11 @@ dependencies {
     kapt archComponents.componentsCompiler
     api archComponents.viewModelKtx
 
+    //Room
+    api roomDb.core
+    api roomDb.ktx
+    api roomDb.rx
+
     //Networking
     api networking.okhttp
     api networking.okhttpLog
